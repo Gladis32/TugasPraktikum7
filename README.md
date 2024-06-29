@@ -24,16 +24,14 @@ SELECT * FROM Perusahaan;
 
 ### 2. Departemen
 ```
-CREATE TABLE Karyawan (
-nik VARCHAR(10) PRIMARY KEY,
-nama VARCHAR(50),
-id_dept VARCHAR(10),
+CREATE TABLE Departemen(
+id_dept VARCHAR(10) PRIMARY KEY,
+nama VARCHAR(45) NOT NULL,
+id_p VARCHAR(10) NOT NULL,
 sup_nik VARCHAR(10),
-gaji_pokok INT,
-FOREIGN KEY (id_dept) REFERENCES Departemen(id_dept),
+FOREIGN KEY (id_p) REFERENCES Perusahaan(id_p),
 FOREIGN KEY (sup_nik) REFERENCES Karyawan(nik)
 );
-
 
 INSERT INTO Departemen VALUES
 ('D01', 'Produksi', 'P02', 'N01'),
@@ -54,8 +52,8 @@ nama VARCHAR(50),
 id_dept VARCHAR(10),
 sup_nik VARCHAR(10),
 gaji_pokok INT,
-FOREIGN KEY (id_dept) REFERENCES departemen(id_p),
-FOREIGN KEY (sup_nik) REFERENCES karyawan(nik)
+FOREIGN KEY (id_dept) REFERENCES Departemen(id_dept),
+FOREIGN KEY (sup_nik) REFERENCES Karyawan(nik)
 );
 
 INSERT INTO Karyawan (nik, nama, id_dept, sup_nik, gaji_pokok) VALUES
