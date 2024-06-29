@@ -40,7 +40,7 @@ id_dept VARCHAR(10),
 sup_nik VARCHAR(10),
 gaji_pokok INT,
 FOREIGN KEY (id_dept) REFERENCES departemen(id_p),
-FOREIGN KEY (sup_nik) REFERENCES pegawai(nik)
+FOREIGN KEY (sup_nik) REFERENCES karyawan(nik)
 );
 
 INSERT INTO Karyawan (nik, nama, id_dept, sup_nik, gaji_pokok) VALUES
