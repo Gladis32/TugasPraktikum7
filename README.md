@@ -129,6 +129,7 @@ SELECT * FROM Project_detail;
 ```
 SELECT nik, nama, id_dept FROM Karyawan WHERE id_dept = (SELECT id_dept FROM Karyawan WHERE nama = 'Dika');
 ```
+Query ini menggunakan `subquery` untuk mendapatkan departemen dari karyawan yang bernama 'Dika', lalu menggunakan hasil tersebut untuk memfilter data karyawan yang memiliki departemen yang sama.
 
 ![2](https://github.com/Gladis32/Tugas_Praktikum7/assets/148181064/bb9dbf3c-7aea-4025-8cfc-b787735010a4)
 
@@ -137,6 +138,8 @@ SELECT nik, nama, id_dept FROM Karyawan WHERE id_dept = (SELECT id_dept FROM Kar
 ```
 SELECT nik, nama, id_dept, gaji_pokok FROM karyawan WHERE gaji_pokok > (SELECT AVG(gaji_pokok) FROM Karyawan) ORDER BY gaji_pokok DESC;
 ```
+
+Rata-rata gaji semua karyawan dihitung menggunakan fungsi `AVG` dan hasilnya digunakan untuk memfilter data karyawan yang memiliki gaji lebih besar. Data karyawan yang memenuhi kriteria tersebut kemudian diurutkan menurun berdasarkan besaran gaji menggunakan sintaks `ORDER BY`.
 
 ![2](https://github.com/Gladis32/Tugas_Praktikum7/assets/148181064/90313a74-63af-447a-94b9-f975690feee5)
 
@@ -147,6 +150,8 @@ SELECT nik, nama, id_dept, gaji_pokok FROM karyawan WHERE gaji_pokok > (SELECT A
 SELECT nik, nama FROM Karyawan WHERE id_dept IN (SELECT id_dept FROM Karyawan WHERE nama LIKE '%K%');
 ```
 
+query ini menggunakan fungsi `IN` untuk memfilter data karyawan yang memiliki departemen yang sama dengan departemen karyawan yang memiliki nama yang mengandung huruf 'K'.
+
 ![3](https://github.com/Gladis32/Tugas_Praktikum7/assets/148181064/d5455e93-a95f-48bc-8deb-9d22cba6943c)
 
 
@@ -156,6 +161,9 @@ SELECT nik, nama FROM Karyawan WHERE id_dept IN (SELECT id_dept FROM Karyawan WH
 ```
 SELECT karyawan.nik, karyawan.nama, karyawan.id_dept FROM karyawan JOIN departemen ON karyawan.id_dept = departemen.id_dept WHERE departemen.id_p = 'P01';
 ```
+
+`JOIN` untuk menggabungkan tabel karyawan dan departemen berdasarkan kolom `id_dept`, lalu memfilter data karyawan yang memiliki departemen yang ada di kantor pusat dengan menggunakan sintaks `WHERE`.
+
 ![4](https://github.com/Gladis32/Tugas_Praktikum7/assets/148181064/497ab480-789c-468f-a54d-6ad6ffc2c393)
 
 ### 5. Tampilkan nik dan nama karyawan untuk semua karyawan yang bekerja didepartment yang sama dengan karyawan dengan nama yang mengandunghuruf 'K' dan yang gajinya lebih besar dari rata-rata gaji semua karyawan
@@ -163,6 +171,8 @@ SELECT karyawan.nik, karyawan.nama, karyawan.id_dept FROM karyawan JOIN departem
 ```
 SELECT DISTINCT k1.nik, k1.nama FROM karyawan k1 JOIN karyawan k2 ON k1.id_dept = k2.id_dept WHERE k1.gaji_pokok > (SELECT AVG(gaji_pokok) FROM karyawan WHERE nama LIKE '%K%');
 ```
+
+`JOIN` untuk menggabungkan tabel karyawan, lalu memfilter data karyawan yang memenuhi kriteria menggunakan sintaks `WHERE`. Data karyawan yang memenuhi kriteria tersebut kemudian diurutkan menggunakan sintaks `SELECT DISTINCT` untuk menghilangkan duplikasi.
 
 ![5](https://github.com/Gladis32/Tugas_Praktikum7/assets/148181064/f6a93580-f7b6-4637-a788-85ccac661d5e)
 
