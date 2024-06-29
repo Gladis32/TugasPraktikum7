@@ -99,9 +99,10 @@ CREATE TABLE Project_detail(
 id_proj VARCHAR(10),
 nik VARCHAR(10),
 PRIMARY KEY (id_proj, nik),
-FOREIGN KEY (id_proj) REFERENCES proyek(id_proj),
-FOREIGN KEY (nik) REFERENCES pegawai(nik)
+FOREIGN KEY (id_proj) REFERENCES Project(id_proj),
+FOREIGN KEY (nik) REFERENCES Karyawan(nik)
 );
+
 
 INSERT INTO Project_detail VALUES
 ('PJ01', 'N01'),
