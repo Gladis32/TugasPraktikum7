@@ -33,7 +33,7 @@ INSERT INTO Departemen VALUES
 
 SELECT * FROM Departemen;
 
-CREATE TABLE pegawai (
+CREATE TABLE Karyawan (
 nik VARCHAR(10) PRIMARY KEY,
 nama VARCHAR(50),
 id_dept VARCHAR(10),
@@ -43,7 +43,7 @@ FOREIGN KEY (id_dept) REFERENCES departemen(id_p),
 FOREIGN KEY (sup_nik) REFERENCES pegawai(nik)
 );
 
-INSERT INTO pegawai (nik, nama, id_dept, sup_nik, gaji_pokok) VALUES
+INSERT INTO Karyawan (nik, nama, id_dept, sup_nik, gaji_pokok) VALUES
 ('N01', 'Ari', 'D01', NULL, 2000000),
 ('N02', 'Dina', 'D01', NULL, 2500000),
 ('N03', 'Rika', 'D03', NULL, 2400000),
