@@ -25,7 +25,7 @@ id_p VARCHAR(10) NOT NULL,
 sup_nik VARCHAR(10) 
 );
 
-INSERT INTO Departemen VALUES
+INSERT INTO Departemen ('id_dept','nama','id_p','sup_nik')  VALUES
 ('D01', 'Produksi', 'P02', 'N01'),
 ('D02', 'Marketing', 'P01', 'N03'),
 ('D03', 'RnD', 'P02', NULL),
