@@ -4,7 +4,9 @@
 |----|---|-----|------|
 |Gladis Toti Anggraini |312310566|TI.23.A5|Basis Data|
 
+## INPUT DATA
 
+### 1. Perusahaan
 ```
 CREATE TABLE Perusahaan(
 id_p VARCHAR(10) PRIMARY KEY,
@@ -17,7 +19,11 @@ INSERT INTO Perusahaan VALUES
 ('P02', 'Cabang Bekasi', NULL);
 
 SELECT * FROM Perusahaan;
+```
+![tabel1](https://github.com/Gladis32/Tugas_Praktikum7/assets/148181064/b752d6dc-912f-41c6-b4c5-138f93833c70)
 
+### 2. Departemen
+```
 CREATE TABLE Departemen(
 id_dept VARCHAR(10) PRIMARY KEY,
 nama VARCHAR(45) NOT NULL,
@@ -32,7 +38,12 @@ INSERT INTO Departemen VALUES
 ('D04', 'Logistik', 'P02', NULL);
 
 SELECT * FROM Departemen;
+```
 
+![tabel2](https://github.com/Gladis32/Tugas_Praktikum7/assets/148181064/206f4190-50a6-4d28-a551-37c3ce165dde)
+
+### 3. Karyawan
+```
 CREATE TABLE Karyawan (
 nik VARCHAR(10) PRIMARY KEY,
 nama VARCHAR(50),
@@ -55,7 +66,13 @@ INSERT INTO Karyawan (nik, nama, id_dept, sup_nik, gaji_pokok) VALUES
 ('N09', 'Raka', 'D03', 'N06', 2000000);
 
 SELECT * FROM Karyawan;
+```
 
+![tabel3](https://github.com/Gladis32/Tugas_Praktikum7/assets/148181064/d8e20d10-32e6-4f24-a0d9-6bddc512c7e3)
+
+### 4. Project
+
+```
 CREATE TABLE Project(
 id_proj VARCHAR(10) PRIMARY KEY,
 nama VARCHAR(45) NOT NULL,
@@ -70,7 +87,12 @@ INSERT INTO Project VALUES
 ('PJ03', 'C', '2019-03-21', '2019-05-10', '1');
 
 SELECT * FROM Project;
+```
 
+![tabel4](https://github.com/Gladis32/Tugas_Praktikum7/assets/148181064/f3ec1de8-bbdb-4159-8052-4a73b4178df1)
+
+### 5. Project Detail
+```
 CREATE TABLE Project_detail(
 id_proj VARCHAR(10),
 nik VARCHAR(10),
@@ -97,42 +119,51 @@ INSERT INTO Project_detail VALUES
 SELECT * FROM Project_detail;
 ```
 
-Latihan
+![tabel5](https://github.com/Gladis32/Tugas_Praktikum7/assets/148181064/a55e894a-840a-47db-857e-43abe80bc6b7)
 
-• Tampilkan data karyawan yang bekerja pada departemen yang sama
-dengan karyawan yang bernama Dika
+
+## Latihan
+
+### 1. Tampilkan data karyawan yang bekerja pada departemen yang samadengan karyawan yang bernama Dika
 
 ```
 SELECT nik, nama, id_dept FROM Karyawan WHERE id_dept = (SELECT id_dept FROM Karyawan WHERE nama = 'Dika');
 ```
 
-• Tampilkan data karyawan yang gajinya lebih besar dari rata-rata gaji semua
-karyawan. urutkan menurun berdasarkan besaran gaji
+![2](https://github.com/Gladis32/Tugas_Praktikum7/assets/148181064/bb9dbf3c-7aea-4025-8cfc-b787735010a4)
+
+### 2. Tampilkan data karyawan yang gajinya lebih besar dari rata-rata gaji semuakaryawan. urutkan menurun berdasarkan besaran gaji
 
 ```
 SELECT nik, nama, id_dept, gaji_pokok FROM karyawan WHERE gaji_pokok > (SELECT AVG(gaji_pokok) FROM Karyawan) ORDER BY gaji_pokok DESC;
 ```
 
-• Tampilkan nik dan nama karyawan untuk semua karyawan yang bekerja di
-department yang sama dengan karyawan dengan nama yang mengandung
-huruf 'K'.
+![2](https://github.com/Gladis32/Tugas_Praktikum7/assets/148181064/90313a74-63af-447a-94b9-f975690feee5)
+
+
+### 3. Tampilkan nik dan nama karyawan untuk semua karyawan yang bekerja didepartment yang sama dengan karyawan dengan nama yang mengandunghuruf 'K'.
 
 ```
 SELECT nik, nama FROM Karyawan WHERE id_dept IN (SELECT id_dept FROM Karyawan WHERE nama LIKE '%K%');
 ```
 
-• Tampilkan data karyawan yang bekerja pada departemen yang ada di
-kantor pusat.
+![3](https://github.com/Gladis32/Tugas_Praktikum7/assets/148181064/d5455e93-a95f-48bc-8deb-9d22cba6943c)
+
+
+
+### 4. Tampilkan data karyawan yang bekerja pada departemen yang ada dikantor pusat.
 
 ```
 SELECT karyawan.nik, karyawan.nama, karyawan.id_dept FROM karyawan JOIN departemen ON karyawan.id_dept = departemen.id_dept WHERE departemen.id_p = 'P01';
 ```
+![4](https://github.com/Gladis32/Tugas_Praktikum7/assets/148181064/497ab480-789c-468f-a54d-6ad6ffc2c393)
 
-• Tampilkan nik dan nama karyawan untuk semua karyawan yang bekerja di
-department yang sama dengan karyawan dengan nama yang mengandung
-huruf 'K' dan yang gajinya lebih besar dari rata-rata gaji semua karyawan
+### 5. Tampilkan nik dan nama karyawan untuk semua karyawan yang bekerja didepartment yang sama dengan karyawan dengan nama yang mengandunghuruf 'K' dan yang gajinya lebih besar dari rata-rata gaji semua karyawan
 
 ```
 SELECT DISTINCT k1.nik, k1.nama FROM karyawan k1 JOIN karyawan k2 ON k1.id_dept = k2.id_dept WHERE k1.gaji_pokok > (SELECT AVG(gaji_pokok) FROM karyawan WHERE nama LIKE '%K%');
 ```
+
+![5](https://github.com/Gladis32/Tugas_Praktikum7/assets/148181064/f6a93580-f7b6-4637-a788-85ccac661d5e)
+
 
